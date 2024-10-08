@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
-    private int enemyHP = 150;
+    private float enemyHP = 150f;
     public Slider healthBar;                    // variables
     public GameObject projectile;
     public Transform projectilePoint;
@@ -25,9 +25,9 @@ public class Enemy : MonoBehaviour
     }
 
 
-    public void TakeDamage(int damageAmount)          // animations for the enemy getting hit and dying
+    public void TakeDamage(float amount)          // animations for the enemy getting hit and dying
     {
-        enemyHP -= damageAmount;
+        enemyHP -= amount;
         if (enemyHP <= 0)
         {
             ScoreScript.scoreValue += 800;
