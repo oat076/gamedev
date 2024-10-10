@@ -18,18 +18,21 @@ public class scoreHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+       
         // targeting the text mesh components
         currentScoreText = currentScore.GetComponent<TMP_Text>();
         highScoreText = highScore.GetComponent<TMP_Text>();
 
         //changing the current score
         currentScoreText.text = PlayerPrefs.GetString("currentScore");
+        PlayerPrefs.Save();
 
         //check whether the current score is more than the highscore
         current = System.Convert.ToInt32(PlayerPrefs.GetString("currentScore"));
+        PlayerPrefs.Save();
         high = System.Convert.ToInt32(PlayerPrefs.GetString("highScore"));
-
-        if(current > high)
+        
+        if (current > high)
         {
             PlayerPrefs.SetString("highScore", System.Convert.ToString(current));
         }

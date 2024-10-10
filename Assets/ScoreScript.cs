@@ -11,6 +11,7 @@ public class ScoreScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        scoreValue = 0;
         score = GetComponent<TMP_Text>();
     }
 
@@ -18,5 +19,12 @@ public class ScoreScript : MonoBehaviour
     void Update()
     {
         score.text = " " + scoreValue;
+
+        PlayerPrefs.SetInt("playerScore", scoreValue);
+        PlayerPrefs.Save();
+
+        
     }
+
+    
 }
