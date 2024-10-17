@@ -13,7 +13,7 @@ public class FPSControllerV2 : MonoBehaviour
 
     public float lookSpeed = 2f;
     public float lookXLimit = 45f;
-
+                                                            // Variables
     private Vector3 moveDirection = Vector3.zero;
     private float rotationX = 0;
 
@@ -39,6 +39,7 @@ public class FPSControllerV2 : MonoBehaviour
         HandleRotation();
     }
 
+    // Moving around with WASD and Space and LeftShift
     void HandleMovement()
     {
         Vector3 forward = transform.TransformDirection(Vector3.forward);
@@ -70,6 +71,7 @@ public class FPSControllerV2 : MonoBehaviour
         characterController.Move(moveDirection * Time.deltaTime);
     }
 
+    // Looking around with mouse
     void HandleRotation()
     {
         rotationX += -Input.GetAxis("Mouse Y") * lookSpeed;

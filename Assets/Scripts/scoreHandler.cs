@@ -1,43 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class scoreHandler : MonoBehaviour
 {
-    public GameObject currentScore;
-    public GameObject highScore;
-    
+    public TMP_Text score;
+    public TMP_Text highScore;
+    public TMP_Text timer;
 
-    private TMP_Text currentScoreText;
-    private TMP_Text highScoreText;
-
-    private int current;
-    private int high;
-
-    // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
-       
-        // targeting the text mesh components
-        currentScoreText = currentScore.GetComponent<TMP_Text>();
-        highScoreText = highScore.GetComponent<TMP_Text>();
+        int currentScore = ScoreScript.scoreValue;
+        score.text = currentScore.ToString();
 
-        //changing the current score
-        currentScoreText.text = PlayerPrefs.GetString("currentScore");
-        PlayerPrefs.Save();
-
-        //check whether the current score is more than the highscore
-        current = System.Convert.ToInt32(PlayerPrefs.GetString("currentScore"));
-        PlayerPrefs.Save();
-        high = System.Convert.ToInt32(PlayerPrefs.GetString("highScore"));
-        
-        if (current > high)
+        if (currentScore > PlayerPrefs.GetInt("Highscore", 0))
         {
-            PlayerPrefs.SetString("highScore", System.Convert.ToString(current));
+            PlayerPrefs.SetInt("Highscore", currentScore);
+            highScore.text = currentScore.ToString();
         }
 
-        highScoreText.text = PlayerPrefs.GetString("highScore");
+        highScore.text = PlayerPrefs.GetInt("Highscore", 0).ToString();
+
+        PlayerPrefs.Save();
+
+        timer.text = PlayerPrefs.GetInt("Timer").ToString();
     }
 
 }
