@@ -6,31 +6,18 @@ using TMPro;
 
 public class CountdownTimer : MonoBehaviour
 {
-    public float currentTime = 0f;
-    public int startingTime = 0;
-    public TMP_Text countDownText;
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        currentTime = startingTime;
-    }
+    [SerializeField] TextMeshProUGUI timerText;
+    float elapsedTime;
 
     // Update is called once per frame
     void Update()
     {
-        currentTime += 1 * Time.deltaTime;
-        countDownText.text = currentTime.ToString("Time Taken: 0");
-
-        if (currentTime <= 0)
-        {
-            currentTime = 0;
-        }
-
-        
-
-        PlayerPrefs.SetInt("Timer", (int)currentTime);
+        elapsedTime += Time.deltaTime;
+        int minutes = Mathf.FloorToInt(elapsedTime / 60);
+        int seconds = Mathf.FloorToInt(elapsedTime % 60);
+        timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+                
+        PlayerPrefs.SetString("Timer", elapsedTime.ToString());
         PlayerPrefs.Save();
     }
 }

@@ -25,7 +25,13 @@ public class scoreHandler : MonoBehaviour
 
         PlayerPrefs.Save();
 
-        timer.text = PlayerPrefs.GetInt("Timer").ToString();
+        string currentTime = PlayerPrefs.GetString("Timer", "0"); // getting time
+
+        float elapsedTime = float.Parse(currentTime);  // making time into a float
+
+        int minutes = Mathf.FloorToInt(elapsedTime / 60);  // making it display in minutes and seconds
+        int seconds = Mathf.FloorToInt(elapsedTime % 60);
+        timer.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
 }

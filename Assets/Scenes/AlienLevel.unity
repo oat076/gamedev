@@ -3322,6 +3322,7 @@ GameObject:
   - component: {fileID: 225382017}
   - component: {fileID: 225382021}
   - component: {fileID: 225382022}
+  - component: {fileID: 225382023}
   m_Layer: 5
   m_Name: HUD
   m_TagString: Untagged
@@ -3444,6 +3445,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 1411429408}
+--- !u!114 &225382023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 225382016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13c70ca368e56944a8070a784f6b391c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerText: {fileID: 1833481167}
 --- !u!1001 &237389853
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13329,7 +13343,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1180961738}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: dc158e837d114774794d6aed53db9698, type: 3}
       propertyPath: m_LocalScale.x
@@ -13345,15 +13359,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dc158e837d114774794d6aed53db9698, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -957.5
+      value: 94.80774
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dc158e837d114774794d6aed53db9698, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 514.4
+      value: 42
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dc158e837d114774794d6aed53db9698, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.4
+      value: -451.5368
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dc158e837d114774794d6aed53db9698, type: 3}
       propertyPath: m_LocalRotation.w
@@ -13361,15 +13375,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dc158e837d114774794d6aed53db9698, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dc158e837d114774794d6aed53db9698, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dc158e837d114774794d6aed53db9698, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dc158e837d114774794d6aed53db9698, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -13387,6 +13401,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: PortalFour
       objectReference: {fileID: 0}
+    - target: {fileID: 1746654310787607633, guid: dc158e837d114774794d6aed53db9698, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: defbdb8d47c401641be7b7c013675558, type: 2}
+    - target: {fileID: 8089062573417005363, guid: dc158e837d114774794d6aed53db9698, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 55af22e36a4cd824dacf3a882b653efc, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -17501,6 +17523,7 @@ Transform:
   - {fileID: 267319932}
   - {fileID: 1080617851}
   - {fileID: 368031909}
+  - {fileID: 1785765464}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1185786616
@@ -33144,6 +33167,11 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 3.5661635, z: 2.930824}
   m_Center: {x: 0, y: 1.6808406, z: 0.0215743}
+--- !u!4 &1785765464 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: dc158e837d114774794d6aed53db9698, type: 3}
+  m_PrefabInstance: {fileID: 949662930}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1788899908
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35028,7 +35056,6 @@ GameObject:
   - component: {fileID: 1833481165}
   - component: {fileID: 1833481168}
   - component: {fileID: 1833481167}
-  - component: {fileID: 1833481166}
   m_Layer: 5
   m_Name: Timer
   m_TagString: Untagged
@@ -35055,21 +35082,6 @@ RectTransform:
   m_AnchoredPosition: {x: -594, y: 489}
   m_SizeDelta: {x: 548.3239, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1833481166
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1833481164}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13c70ca368e56944a8070a784f6b391c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentTime: 0
-  startingTime: 0
-  countDownText: {fileID: 1833481167}
 --- !u!114 &1833481167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43784,4 +43796,3 @@ SceneRoots:
   - {fileID: 225382020}
   - {fileID: 714499566}
   - {fileID: 761735717}
-  - {fileID: 949662930}
