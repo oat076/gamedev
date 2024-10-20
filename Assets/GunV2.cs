@@ -33,11 +33,12 @@ public class GunV2 : MonoBehaviour
         if (isReloading)
             return;
 
-        if (currentAmmo < 0)
+        if (Input.GetKeyDown(KeyCode.R) || currentAmmo <= 0)
         {
             StartCoroutine(Reload());
             return;
         }
+        
 
         if (Input.GetButton("Fire1") && Time.time >= nextTimeToFire)  // making the button work
         {
@@ -49,7 +50,6 @@ public class GunV2 : MonoBehaviour
     IEnumerator Reload()
     {
         isReloading = true;
-        Debug.Log("Reloading...");
 
         animator.SetBool("Reloading", true);
 

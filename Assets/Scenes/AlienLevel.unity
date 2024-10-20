@@ -37332,7 +37332,7 @@ MonoBehaviour:
   range: 100
   fireRate: 15
   impactForce: 30
-  maxAmmo: 50
+  maxAmmo: 35
   reloadTime: 1
   fpsCam: {fileID: 296900537}
   muzzleFlash: {fileID: 1579938383}
