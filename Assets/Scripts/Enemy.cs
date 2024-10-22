@@ -30,7 +30,7 @@ public class Enemy : MonoBehaviour
         enemyHP -= amount;
         if (enemyHP <= 0)
         {
-            ScoreScript.scoreValue += 800;
+            ScoreScript.scoreValue += Random.Range(800, 1000);
 
             //Play Death Animation
             animator.SetTrigger("death");
