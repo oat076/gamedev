@@ -22,7 +22,9 @@ public class EndGameWin : MonoBehaviour
                 Cursor.visible = true; // Show the cursor
 
                 PlayerPrefs.SetString("playerScore", scoreText.text);
-                SceneManager.LoadScene(5);          // if yes load win scene
+                SceneManager.LoadScene(5, LoadSceneMode.Additive);
+                SceneManager.LoadScene(3, LoadSceneMode.Additive);          // if yes load win scene
+                
             }
 
         }

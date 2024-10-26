@@ -10,6 +10,7 @@ TagManager:
   - Enemy
   - agent
   - WayPoints
+  - HighscoreTable
   layers:
   - Default
   - TransparentFX
