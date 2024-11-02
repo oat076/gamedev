@@ -13,7 +13,7 @@ public class EndGameWin : MonoBehaviour
     private void OnTriggerEnter(Collider Portal)
     {
 
-        if (ScoreScript.scoreValue >= 800)
+        if (ScoreScript.scoreValue >= 100000)
         {
 
             if (Portal.tag == "Player")           // checks to see if player has hit the portal

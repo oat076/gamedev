@@ -9,7 +9,7 @@ public class Projectile : MonoBehaviour
 
     private void Start()
     {
-        Destroy(gameObject, 10f);           // destroying the bullet after 10 seconds
+        Destroy(gameObject, 5f);           // destroying the bullet after 5 seconds
     }
 
     private void OnTriggerEnter(Collider other)

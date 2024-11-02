@@ -1,89 +1,130 @@
-using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using TMPro;
 
 public class GunV2 : MonoBehaviour
 {
-    public float damage = 10f;
-    public float range = 100f;
-    public float fireRate = 30f;
-    public float impactForce = 30f;
+    public float damage = 100f;
+    public float range = 200f; 
+    public float fireRate = 15f;  
+    public float impactForce = 30f; 
 
-    public int maxAmmo = 10;
-    private int currentAmmo;
-    public float reloadTime = 1f;
-    private bool isReloading = false;
+    public Camera fpsCam; 
+    public ParticleSystem muzzleFlash; 
+    public GameObject impactEffect; 
+    public AudioSource P_Shoot; 
+    public AudioClip P_Shoot_Clip; 
+    public AudioSource Reloads; 
+    public AudioClip Reloads_Clip; 
+    public TextMeshProUGUI Ammoinfo; 
+                                                // Variables
 
-    public Camera fpsCam;
-    public ParticleSystem muzzleFlash;
-    public GameObject impactEffect;
+    public int maxAmmo = 10; 
+    public int currentAmmo; 
+    public int magazineSize;
+    public float reloadTime = 1f;  
+    private bool isReloading = false; 
 
-    private float nextTimeToFire = 0f;
-
+    private float nextTimeToFire = 0f; 
     public Animator animator;
+
 
     void Start()
     {
-        currentAmmo = maxAmmo;
+
+
+        currentAmmo = maxAmmo; 
     }
 
-    // Update is called once per frame
     void Update()
     {
+
+        FindObjectOfType<GunV2>();
+        Ammoinfo.text = currentAmmo + " / " + maxAmmo;  // Ammo Counter
+
 
         if (isReloading)
             return;
 
-        if (Input.GetKeyDown(KeyCode.R) || currentAmmo <= 0)
+
+        if (currentAmmo <= 0) 
         {
             StartCoroutine(Reload());
             return;
-        }
-        
 
-        if (Input.GetButton("Fire1") && Time.time >= nextTimeToFire)  // making the button work
+        }
+
+        if (Input.GetKeyDown(KeyCode.R) && currentAmmo < maxAmmo) 
+        {
+            StartCoroutine(Reload());
+        }
+
+
+
+
+        if (Input.GetButton("Fire1") && Time.time >= nextTimeToFire) 
         {
             nextTimeToFire = Time.time + 1f / fireRate;
             Shoot();
+
+
+
         }
     }
 
+
+    // Reload when out of ammo
     IEnumerator Reload()
     {
+
+        Reloads.PlayOneShot(Reloads_Clip, 4f); 
+
+
         isReloading = true;
+        Debug.Log("Reloading..");
 
         animator.SetBool("Reloading", true);
 
-        yield return new WaitForSeconds(reloadTime - .25f);
+        yield return new WaitForSeconds(reloadTime - .25f); 
+
         animator.SetBool("Reloading", false);
+
         yield return new WaitForSeconds(.25f);
 
         currentAmmo = maxAmmo;
         isReloading = false;
+
+
     }
 
+    // Shooting the gun
     void Shoot()
     {
+
         muzzleFlash.Play();
-
+        P_Shoot.PlayOneShot(P_Shoot_Clip);
         currentAmmo--;
-
-        RaycastHit hit;
-        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range)) //shooting the bullet from the gun
+        RaycastHit hit; 
+        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
         {
+            Debug.Log(hit.transform.name);
 
-            Enemy enemy = hit.transform.GetComponent<Enemy>();
-            if (enemy != null)
+            Enemy HP = hit.transform.GetComponent<Enemy>();
+            if (HP != null)
             {
-                enemy.TakeDamage(damage);
+                HP.TakeDamage(damage); 
             }
 
-            if (hit.rigidbody != null)
+
+            if (hit.rigidbody != null) 
             {
-                hit.rigidbody.AddForce(-hit.normal * impactForce);
+                hit.rigidbody.AddForce(hit.normal);
             }
 
             GameObject impactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
             Destroy(impactGO, 2f);
         }
     }
+
 }

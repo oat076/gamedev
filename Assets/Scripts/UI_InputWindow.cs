@@ -107,11 +107,4 @@ public class UI_InputWindow : MonoBehaviour
             }
         );
     }
-
-
-
-
-
-
-
 }

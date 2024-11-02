@@ -8,8 +8,10 @@ public class HealingItem : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player"))
-        {                                                               // checking if player used medkit
+
+        if (other.CompareTag("Player"))
+        {
+            // checking if player used medkit
             other.GetComponent<PlayerStats>().Heal(healAmount);
             Destroy(gameObject);    // destroys medkit if used
         }

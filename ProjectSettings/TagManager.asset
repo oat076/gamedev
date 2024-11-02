@@ -11,6 +11,10 @@ TagManager:
   - agent
   - WayPoints
   - HighscoreTable
+  - WayPointsRed
+  - WayPointsPurple
+  - WayPointsBig
+  - WayPointsBlue
   layers:
   - Default
   - TransparentFX
@@ -20,7 +24,7 @@ TagManager:
   - UI
   - Ground
   - WorldEnd(Ground)
-  - 
+  - WayPointsPurple
   - 
   - 
   - 

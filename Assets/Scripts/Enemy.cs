@@ -10,6 +10,9 @@ public class Enemy : MonoBehaviour
     public GameObject projectile;
     public Transform projectilePoint;
 
+    public AudioSource DieSound;
+    public AudioClip DieSound_Clip;
+
     public Animator animator;
 
     private void Update()
@@ -30,7 +33,9 @@ public class Enemy : MonoBehaviour
         enemyHP -= amount;
         if (enemyHP <= 0)
         {
-            ScoreScript.scoreValue += Random.Range(800, 1000);
+            ScoreScript.scoreValue += Random.Range(1500, 2000);
+
+            DieSound.PlayOneShot(DieSound.clip);
 
             //Play Death Animation
             animator.SetTrigger("death");
