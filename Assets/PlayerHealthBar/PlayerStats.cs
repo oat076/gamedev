@@ -52,7 +52,7 @@ public class PlayerStats : MonoBehaviour
         Cursor.lockState = CursorLockMode.None; // Unlock the cursor
         Cursor.visible = true; // Show the cursor
 
-        Invoke("GameOver", 1f);
+        Invoke("GameOver", 0.3f);
    
     }
 

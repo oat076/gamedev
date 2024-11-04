@@ -13,12 +13,12 @@ public class UI_Blocker : MonoBehaviour
 
     public static void Show_Static()
     {
-        instance.gameObject.SetActive(true);
+        instance.gameObject.SetActive(false);
         instance.transform.SetAsLastSibling();
     }
     
     public static void Hide_Static()
     {
-        instance.gameObject.SetActive(false);
+        instance.gameObject.SetActive(true);
     }
 }

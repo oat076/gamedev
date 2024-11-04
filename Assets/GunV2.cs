@@ -24,7 +24,7 @@ public class GunV2 : MonoBehaviour
     public int currentAmmo; 
     public int magazineSize;
     public float reloadTime = 1f;  
-    private bool isReloading = false; 
+    public bool isReloading = false; 
 
     private float nextTimeToFire = 0f; 
     public Animator animator;
@@ -35,6 +35,12 @@ public class GunV2 : MonoBehaviour
 
 
         currentAmmo = maxAmmo; 
+    }
+
+    private void OnEnable()
+    {
+        isReloading = false;
+        animator.SetBool("isReloading", false);
     }
 
     void Update()
@@ -48,7 +54,7 @@ public class GunV2 : MonoBehaviour
             return;
 
 
-        if (currentAmmo <= 0) 
+        if (currentAmmo <= 0 && magazineSize > 0) 
         {
             StartCoroutine(Reload());
             return;

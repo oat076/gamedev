@@ -8,7 +8,7 @@ public class PatrolBehavior : StateMachineBehaviour
     List<Transform> wayPoints = new List<Transform>();
     NavMeshAgent agent;
     Transform player;
-    float ChaseRange = 15;
+    float ChaseRange = 50;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
